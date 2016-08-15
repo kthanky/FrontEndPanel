@@ -25,7 +25,9 @@
     <![endif]-->
     <script>
         $(document).ready(function(){
+            $('#block').css('display', 'none');
             $("#deleteListForm").submit(function(){
+                $('#block').css('display', 'block');
                 var listname = $("#listname").val();
                 $.ajax({
                     type: "delete",
@@ -36,7 +38,12 @@
                     url: "http://localhost:8080/causecode-mailapp/index.php/listmanager/removelist",
                     cache: false,
                     success: function(result){
+                        $('#block').css('display', 'none');
                         alert(result['http_response_body']['message']);
+                    },
+                    error:function(){
+                        $('#block').css('display', 'none');
+                        alert('Error..Try Again');
                     }
                 });
                 return false;
@@ -133,6 +140,13 @@
                         </div>
                     </div>
                 </form>
+                <div id="block">
+                    <p class="text-center text-muted">
+                        <span class="fa fa-spinner fa-spin fa-4x"></span>
+                        <br /><br />
+                        Loading, please wait...
+                    </p>
+                </div>
             </div>
         </section>
         <!-- /.content -->

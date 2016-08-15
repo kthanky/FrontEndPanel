@@ -31,11 +31,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+
+    </style>
     <script>
         var postApp = angular.module('DeleteApp', []);
-        // Controller function and passing $http service and $scope var.
         postApp.controller('DeleteAppController', function($scope, $http) {
+            angular.element('#block').css('display', 'none');
             $scope.submitForm = function() {
+                angular.element('#block').css('display', 'block');
                 var listname= $scope.field.listname;
                 var useraddress = $scope.field.useraddress;
                 $http({
@@ -46,10 +50,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 })
                         .success(
                         function(data){
+                            angular.element('#block').css('display', 'none');
                             alert("Member Deleted");
+
                         })
                         .error( function (data){
+                            angular.element('#block').css('display', 'none');
                             alert("Error..Try Again");
+
                         })
             };
         });
@@ -58,7 +66,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition skin-blue sidebar-mini" ng-app="DeleteApp">
 <div class="wrapper">
-
     <!-- Main Header -->
     <header class="main-header">
 
@@ -150,6 +157,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </div>
                 </form>
+                <div id="block">
+                    <p class="text-center text-muted">
+                        <span class="fa fa-spinner fa-spin fa-4x"></span>
+                        <br /><br />
+                        Loading, please wait...
+                    </p>
+                </div>
             </div>
         </section>
         <!-- /.content -->

@@ -33,7 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <![endif]-->
     <script>
         $(document).ready(function(){
+            $('#block').css('display', 'none');
             $("#addMemberForm").submit(function(){
+                $('#block').css('display', 'block');
                 var listname = $("#listname").val();
                 var username = $("#username").val();
                 var useraddress = $("#useraddress").val();
@@ -46,7 +48,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     data: dataString,
                     cache: false,
                     success: function(result){
+                        $('#block').css('display', 'none');
                         alert(result['http_response_body']['message']);
+                    },
+                    error : function(){
+                        $('#block').css('display', 'none');
+                        alert('Error...Try Again');
                     }
                 });
                 return false;
@@ -167,6 +174,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </div>
                 </form>
+                <div id="block">
+                    <p class="text-center text-muted">
+                        <span class="fa fa-spinner fa-spin fa-4x"></span>
+                        <br /><br />
+                        Loading, please wait...
+                    </p>
+                </div>
             </div>
         </section>
         <!-- /.content -->

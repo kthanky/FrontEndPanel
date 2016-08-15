@@ -38,10 +38,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         var postApp = angular.module('MyApp', []);
         // Controller function and passing $http service and $scope var.
         postApp.controller('GetCtrl', function($scope, $http) {
+            angular.element('#block').css('display', 'none');
 
             $scope.submitForm = function() {
+                angular.element('#block').css('display', 'block');
                 var listname= document.userForm.listname.value;
-                console.log(listname);
                 $http({
                     method  : 'GET',
                     url     : 'http://localhost:8080/causecode-mailapp/index.php/listmembermanager/getmembers',
@@ -52,6 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 .then(
                     function successCallBack(result)
                     {
+                        angular.element('#block').css('display', 'none');
                         console.log(result.data.http_response_body);
                         $scope.data1=result.data.http_response_body;
                         var content = '<table class="table table-bordered table-responsive"><thead class="bg-blue-gradient"><tr><th>S No.</th><th>Name</th><th>Address</th><th>Age</th><th>Subscribed</th></tr></thead><tbody>';
@@ -65,6 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     },
                     function errorCallBack(result)
                     {
+                        angular.element('#block').css('display', 'none');
                         alert('No Such List Exist');
                     }
                 );
@@ -163,6 +166,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div id="membertable">
                     </div>
                 </form>
+                <div id="block">
+                    <p class="text-center text-muted">
+                        <span class="fa fa-spinner fa-spin fa-4x"></span>
+                        <br /><br />
+                        Loading, please wait...
+                    </p>
+                </div>
             </div>
         </section>
         <!-- /.content -->
