@@ -7,11 +7,14 @@
 
 *   For Form submisson [AngularJS](https://docs.angularjs.org/guide/introduction) and [jQuery.ajax()](http://api.jquery.com/jquery.ajax/) is used.  
  
-*   A Dashboard(index.html) is provided which gives the basic help needed for user to understand.
-###It contains mainly 3 functionality
+*   A Dashboard(index.html) is provided which gives the basic help needed for user to understand. 
+
+*   URL for form submission might be needed to change as per apache environment set up(apache port used is:8080).
+
+    ###It contains mainly 3 functionality
     ####Send Mail
        *   The page url is pages/sendmail.html
-           *   The main function of this page is to send mail to a list.
+       *   The main function of this page is to send mail to a list.
            
     ####Manage List  
        *   ######Create List
@@ -37,4 +40,3 @@
        *    ######Edit Member
            *   The page url is pages/deletemember.html
            *   The main function of this page is to delete the specified member of specified list.
-                
