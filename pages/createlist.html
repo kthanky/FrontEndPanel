@@ -36,6 +36,9 @@
                         cache: false,
                         success: function(result){
                             alert(result['http_response_body']['message']);
+                        },
+                        error: function(result){
+                            alert("Error..Try Again");
                         }
                     });
                 return false;

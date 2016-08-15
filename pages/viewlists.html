@@ -24,6 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../dist/css/skins/skin-blue.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,9 +32,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .no-js #loader { display: none;  }
+        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(../dist/img/Preloader_2.gif) center no-repeat #fff;
+        }
+    </style>
     <script>
+
         $(document).ready(function(){
-                $.ajax({
+            $(".se-pre-con").fadeIn('fast').delay(1500).fadeOut('slow');
+            $.ajax({
                     type: "GET",
                     url: "http://localhost:8080/causecode-mailapp/index.php/listmanager/getlist",
                     cache: false,
@@ -46,6 +62,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         content += "</tbody></table>"
 
                         $('#listtable').append(content);
+                    },
+                    error:function(result){
+                        alert('No Mail Lists Exist');
                     }
                 });
             return false;
@@ -55,6 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+    <div class="se-pre-con"></div>
 
     <!-- Main Header -->
     <header class="main-header">
