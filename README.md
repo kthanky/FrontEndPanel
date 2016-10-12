@@ -17,26 +17,26 @@
        *   The main function of this page is to send mail to a list.
            
     ####Manage List  
-       *   ######Create List
+       *   Create List
            *   The page url is pages/createlist.html
            *   The main function of this page is to create a new list.
-       *    ######View Lists
+       *   View Lists
            *   The page url is pages/viewlists.html
            *   The main function of this page is to view all created lists.
-       *    ######Delete List
+       *   Delete List
            *   The page url is pages/deletelist.html
            *   The main function of this page is to delete the list.
            
     ####Manage Member
-       *   ######Add Member
+       *   Add Member
            *   The page url is pages/addmember.html
            *   The main function of this page is to add a member to the specified list.
-       *    ######View Members
+       *   View Members
            *   The page url is pages/viewmembers.html
            *   The main function of this page is to view all members of a specified list.
-       *    ######Edit Member
+       *   Edit Member
            *   The page url is pages/editmember.html
            *   The main function of this page is to edit the specified member of specified list.
-       *    ######Edit Member
+       *   Delete Member
            *   The page url is pages/deletemember.html
            *   The main function of this page is to delete the specified member of specified list.
